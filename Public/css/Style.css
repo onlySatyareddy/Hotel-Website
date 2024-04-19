@@ -1,0 +1,32 @@
+.card {
+    border: none; /* Remove border */
+    margin-bottom: 2rem; /* Set margin bottom */
+  }
+  
+  .card-img-top {
+    border-radius: 1rem; /* Set border radius */
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 10px; /* Set padding */
+  }
+  
+  .card-text p {
+    font-weight: 10px; /* Adjust font weight */
+  }
+  
+  .card-link {
+    text-decoration-line: none; /* Remove underline from links */
+  }
+  
+  .card-img-overlay {
+    opacity: 0; /* Set opacity */
+  }
+  
+  .card-img-overlay:hover {
+    background-color: whitesmoke; /* Change background color on hover */
+    opacity: 0.2;
+  }
+  

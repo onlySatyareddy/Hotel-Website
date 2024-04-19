@@ -1,0 +1,115 @@
+.navbar-nav .nav-link {
+    padding-left: 0.5rem;
+  
+}
+
+.navbar-nav a {
+    color: #e0cbcb;
+    transition: all ease 0.5s;
+    
+}
+
+.navbar-nav a:hover,
+.navbar-nav a:focus,
+.navbar-nav a:active,
+.navbar-nav a.hilite {
+    color: #bfbfbf;
+      background: linear-gradient(45deg, #6b6b6b,#21212121);
+    border-bottom: 1px #7f7f7f solid;
+    height: 22px;
+
+}
+.navbar-nav .nav-link {
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* Media Query for screen width >= 48em (768px) */
+@media only screen and (min-width: 48em) {
+
+    .navbar-nav a:hover,
+    .navbar-nav a:focus,
+    .navbar-nav a:active,
+    .navbar-nav a.hilite {
+        transform: translateY(0.5rem) scaleY(1.2);
+    }
+
+    .navbar-nav .nav-link {
+        padding-left: 0;
+    }
+}
+
+/*  """""""""""""""""""""ADD  NEW  CSS =========================================== */
+
+
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.bg-teal {
+    background-color: #205e5e;  
+}
+
+.table tbody tr td {
+    font-weight: bold;
+}
+
+.bg-primary,
+.btn-primary {
+    background: linear-gradient(45deg, black, deepskyblue);
+}
+
+.bg-info,
+.btn-info {
+    background: linear-gradient(45deg, black, cadetblue);
+}
+
+.bg-secondary,
+.btn-secondary {
+    background: linear-gradient(45deg, black, mediumpurple);
+}
+
+.bg-success,
+.btn-success {
+    background: linear-gradient(45deg, black, lawngreen);
+}
+
+.bg-warning,
+.btn-warning {
+    background: linear-gradient(45deg, black, lightcoral);
+}
+
+.bg-danger,
+.btn-danger {
+    background: linear-gradient(45deg, black, orangered);
+}
+
+
+.btn-custom1{
+    background: linear-gradient(45deg, black, #6b6b6b);
+}
+
+.btn-custom2{
+    background: linear-gradient(45deg, #6b6b6b, black);
+}
+.btn-custom {
+    background: linear-gradient(45deg, black, #0dcaf0);
+}
+
+
+
+.btn-custom3{
+    background: linear-gradient(45deg, #000000, #21212121);
+}
+
+.btn-custom4{
+    background: linear-gradient(45deg, #6b6b6b,#21212121);
+}
+
+.btn-custom5{
+    background: linear-gradient(45deg,#21212121, #909090);
+}
+
+/* -------------------------------------------ADD CSS CARD____________+++++++++============      */

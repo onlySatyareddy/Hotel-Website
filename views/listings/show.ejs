@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>website</title>
+    <%-include('../layouts/boilerplate.ejs')%>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+   
+
+
+    <style>
+      /* Define card styles */
+      .card {
+        width: 100%;
+        max-width: 400px;
+        margin: 30px auto 0;
+        background-color: #bfbfbfbf;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .card-img-container {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+      }
+
+      .card img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .card-body {
+        padding: 15px;
+      }
+      /* Styling for delete button */
+      .btn form button {
+        background-color: black; 
+        border: none; 
+        cursor: pointer; 
+      }
+
+      .btn form button:hover {
+        background-color: #333; 
+      }
+
+      /* Styling for edit button */
+      .btn a.btn-primary {
+        display: flex;
+        background-color: lightcoral;
+        color: white;
+        text-decoration: none;
+
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .btn a.btn-primary:hover {
+        background-color: #ff6666;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h3>Listing Details :</h3>
+      <div class="card-img-container">
+        <img
+          src="<%= listing.image %>"
+          class="card-img-top"
+          alt="listing_image"
+        />
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <b><%= listing.title %></b><br /><br />
+          <%= listing.description %><br />
+          <b>
+            <% if (listing.price !== null && listing.price !== undefined) { %>
+              <b>&#8377; <%= listing.price.toLocaleString("en-IN") %></b><br /><br />
+          <% } %> 
+          </b>
+          <%= listing.location %><br />
+          <%= listing.country %><br /><br />
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="btn d-flex justify-content"
+      style="margin: 20px; padding: 5px 10px"
+    >
+      <a
+        href="/listings/<%= listing._id %>/edit"
+        class="btn btn-primary me-3 offset-3"
+        >Edit</a
+      >
+      <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+        <button class="btn btn-danger offset-2">Delete</button>
+      </form>
+    </div>
+
+
+
+
+    <!-- <div class="container">
+      <h4>Leave a Review</h4>
+      <form action="/listings/<%= listing._id %>/reviews" method="post">
+        <div class="mb-3">
+          <label for="rating" class="form-label">Rating</label>
+          <input type="range" min="1" max="5" class="form-range" id="rating" name="Review[rating]">
+        </div>
+    
+        <div class="mb-3">
+          <label for="comments" class="form-label">Comments</label>
+          <textarea class="form-control" name="Review[comment]" id="comments" rows="3"></textarea>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+     -->
+     <div class="container">
+      <h4>Leave a Review</h4>
+      <form action="/listings/<%= listing._id %>/reviews" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="rating" class="form-label">Rating</label>
+          <input type="range" min="1" max="5" class="form-range" id="rating" name="Review[rating]" required>
+          <div class="invalid-feedback">Please provide a rating.</div>
+        </div>
+    
+        <div class="mb-3">
+          <label for="comments" class="form-label">Comments</label>
+          <textarea class="form-control" name="Review[Comment]" id="comments" rows="3" required></textarea>
+          <div class="invalid-feedback">Please provide your comments.</div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    
+    
+    <hr>
+    <h4>
+      All Reviews
+    </h4>
+    <ul>
+      <% listing.reviews.forEach(review => { %>
+        <li>
+          <%= review.comment %>
+          <%= review.rating %>
+        </li>
+      <% }); %>
+    </ul>
+    
+
+    <script>
+      (function () {
+        "use strict";
+
+        var forms = document.querySelectorAll(".needs-validation");
+
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
